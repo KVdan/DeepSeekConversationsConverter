@@ -1,109 +1,3 @@
-# DeepSeek Conversations Converter
-## Overview
-
-This Node.js script processes DeepSeek exported conversation JSON files, converting them into a structured Markdown format and allowing users to customize which parts of the conversation to retain. The script offers interactive configuration options, allowing users to choose whether to retain user messages, DeepSeek's preprocessing steps, or DeepSeek's main responses.
-
-## Key Features
-
-* **Interactive Configuration**: Choose which parts of the conversation to keep during runtime.
-* **Smart Message Processing**:
-
-  * Automatically distinguish between user messages and DeepSeek replies.
-  * Separate DeepSeek's preprocessing steps and main responses.
-* **Markdown Formatting**: Generate readable conversation logs in Markdown.
-* **Filename Cleaning**: Automatically handle special characters and length restrictions in filenames.
-* **Error Handling**: A failure in one conversation does not affect the overall processing.
-
-## Usage Instructions
-
-### Prerequisites
-
-* Node.js (recommended version 14 or higher)
-
-### Quick Start
-
-1. Rename the DeepSeek exported conversation JSON file to `conversations.json` and place it in the same directory as the script.
-2. Run the following command:
-
-   ```bash
-   node conversationsToMD.js
-   ```
-3. Follow the prompts to choose which parts to retain:
-
-   ```
-   Please choose what to retain (input y/n):
-   Retain "my" messages? (y/n) y
-   Retain DeepSeek preprocessing? (y/n) n
-   Retain DeepSeek main responses? (y/n) y
-   ```
-4. View the generated Markdown files in the `./conversationsMD/` directory.
-
-### Sample Output
-
-```markdown
-# Conversation Title
-
-**Me:**
-User message content
-
----
-
-**DeepSeek Main Response:**
-DeepSeek reply content
-
----
-```
-
-### Configuration Options
-
-| Option                         | Description                               | Default Value |
-| ------------------------------ | ----------------------------------------- | ------------- |
-| Retain "my" messages           | Whether to retain user messages           | Yes           |
-| Retain DeepSeek preprocessing  | Whether to retain DeepSeek preprocessing  | Yes           |
-| Retain DeepSeek main responses | Whether to retain DeepSeek main responses | Yes           |
-
-## File Structure
-
-```
-.
-├── conversationsToMD.js    # Main processing script
-├── conversations.json       # DeepSeek exported conversation data
-└── conversationsMD/         # Generated Markdown files directory
-    ├── Conversation1.md
-    ├── Conversation2.md
-    └── ...
-```
-
-## Technical Details
-
-* **Message Processing**:
-
-  * Processes conversations in node ID order.
-  * Automatically excludes the root node.
-  * Smartly identifies message types (User/DeepSeek).
-* **Output Format**:
-
-  * Title: `# Conversation Title`
-  * User message: `**Me:**\n[content]`
-  * DeepSeek reply: `**DeepSeek Preprocessing:**` and `**DeepSeek Main Response:**`
-  * Message separator: `---`
-
-## Notes
-
-1. Ensure the input file is a valid DeepSeek export JSON.
-2. Filename cleaning rules:
-
-   * Remove illegal characters like `<>:"/\\|?*`.
-   * Merge redundant spaces.
-   * Limit filename length to 100 characters.
-3. If no content matching the criteria is found, the file generation will be skipped.
-
-## Contributing
-
-Please do not submit improvement suggestions or issue reports! Feedback does not need to be submitted via Issues!
-
----
-
 # DeepSeek 对话处理器
 
 ## 概述
@@ -202,3 +96,20 @@ DeepSeek 回复内容
 ## 贡献
 
 请勿提交改进建议或问题报告！不必通过 Issues 提交您的反馈！
+
+---
+
+## Overview (DeepSeek Conversations Converter)
+
+This Node.js script processes DeepSeek exported conversation JSON files, converting them into a structured Markdown format and allowing users to customize which parts of the conversation to retain. The script offers interactive configuration options, allowing users to choose whether to retain user messages, DeepSeek's preprocessing steps, or DeepSeek's main responses.
+
+### Key Features
+
+* **Interactive Configuration**: Choose which parts of the conversation to keep during runtime.
+* **Smart Message Processing**:
+
+  * Automatically distinguish between user messages and DeepSeek replies.
+  * Separate DeepSeek's preprocessing steps and main responses.
+* **Markdown Formatting**: Generate readable conversation logs in Markdown.
+* **Filename Cleaning**: Automatically handle special characters and length restrictions in filenames.
+* **Error Handling**: A failure in one conversation does not affect the overall processing.
